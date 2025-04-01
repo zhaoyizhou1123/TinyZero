@@ -1,3 +1,5 @@
+echo ${N_GPUS}
+
 python -m verl.trainer.main_ppo \
 data.train_files=$DATA_DIR/train.parquet \
 data.val_files=$DATA_DIR/test.parquet \
@@ -20,7 +22,7 @@ algorithm.kl_ctrl.kl_coef=0.001 \
 trainer.logger=['wandb'] \
 +trainer.val_before_train=False \
 trainer.default_hdfs_dir=null \
-trainer.n_gpus_per_node=$N_GPUS \
+trainer.n_gpus_per_node=${N_GPUS} \
 trainer.nnodes=1 \
 trainer.save_freq=100 \
 trainer.test_freq=100 \

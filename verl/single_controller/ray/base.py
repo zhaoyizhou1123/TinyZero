@@ -54,6 +54,7 @@ class RayResourcePool(ResourcePool):
                  name_prefix: str = "",
                  max_colocate_count: int = 5,
                  detached=False) -> None:
+        print("Debug ray/base/init", process_on_nodes)
         super().__init__(process_on_nodes, max_colocate_count)
         self.use_gpu = use_gpu
         # print(f"in RayProcessDispatchConfiguration: name_prefix = {name_prefix}")
@@ -68,6 +69,7 @@ class RayResourcePool(ResourcePool):
         pg_name_prefix = name if name else \
             f"{self.name_prefix}verl_group_{'_'.join([str(count) for count in self._store])}:"
         # print(f"pg_name_prefix = {pg_name_prefix}")
+        print("Debug ray/base", self._store)
         pg_scheme = [[{
             "CPU": self.max_collocate_count,
             "GPU": 1

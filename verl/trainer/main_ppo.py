@@ -149,6 +149,8 @@ def main_task(config):
     resource_pool_spec = {
         global_pool_id: [config.trainer.n_gpus_per_node] * config.trainer.nnodes,
     }
+    print("Debug/main_ppo, n_gpus_per_node", config.trainer.n_gpus_per_node, config.trainer.nnodes)
+    print("Debug/main_ppo, resource_pool_spec", resource_pool_spec)
     mapping = {
         Role.ActorRollout: global_pool_id,
         Role.Critic: global_pool_id,
